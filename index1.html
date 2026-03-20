@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scientific Notation Checker - Animated</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0a1f44, #1e3c72);
+      margin: 0;
+      overflow: hidden;
+      color: white;
+    }
+
+    /* Floating math animation */
+    .math {
+      position: absolute;
+      font-size: 20px;
+      opacity: 0.2;
+      animation: float 10s linear infinite;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(100vh);
+      }
+      to {
+        transform: translateY(-10vh);
+      }
+    }
+
+    .menu {
+      background: #001f5b;
+      padding: 10px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .menu div {
+      cursor: pointer;
+    }
+
+    .container {
+      text-align: center;
+      margin-top: 100px;
+      z-index: 2;
+      position: relative;
+    }
+
+    input {
+      padding: 12px;
+      width: 260px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    button {
+      padding: 12px 25px;
+      margin-top: 15px;
+      background: #003f88;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #0059b3;
+      transform: scale(1.1) rotate(-1deg);
+      box-shadow: 0 0 15px rgba(0, 150, 255, 0.7);
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Math Animation Elements -->
+<div class="math" style="left:10%; animation-duration:12s;">3×10³</div>
+<div class="math" style="left:30%; animation-duration:9s;">5×10⁻²</div>
+<div class="math" style="left:50%; animation-duration:11s;">1.2×10⁴</div>
+<div class="math" style="left:70%; animation-duration:8s;">9×10⁶</div>
+<div class="math" style="left:90%; animation-duration:10s;">7×10⁻³</div>
+
+<div class="menu">
+  <div onclick="alert('File menu')">File</div>
+  <div onclick="alert('Edit menu')">Edit</div>
+  <div onclick="alert('Run menu')">Run</div>
+  <div onclick="showAbout()">About</div>
+</div>
+
+<div class="container">
+  <h2>Scientific Notation Checker</h2>
+  <input type="text" id="inputNumber" placeholder="e.g. 3x10^3">
+  <br>
+  <button onclick="checkScientific()">Check</button>
+  <div class="result" id="result"></div>
+</div>
+
+<script>
+function showAbout() {
+  alert("Name: Milanisty Abigael Tamaka\nNIM: 241011060083");
+}
+
+function checkScientific() {
+  const input = document.getElementById("inputNumber").value.trim();
+  const regex = /^[-+]?\d+(\.\d+)?x10\^[-+]?\d+$/i;
+
+  if (regex.test(input)) {
+    document.getElementById("result").innerText =
+      "Result = Yes, it is a scientific number";
+  } else {
+    document.getElementById("result").innerText =
+      "Result = No, it is not a scientific number";
+  }
+}
+</script>
+
+</body>
+</html>
